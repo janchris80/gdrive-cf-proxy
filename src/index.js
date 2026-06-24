@@ -190,7 +190,7 @@ function landingPage(env) {
       String(env.ENABLE_HOTLINK_PROTECTION).toLowerCase() === "true" ? "ON" : "OFF"
     }</b>
     · Cache TTL: <b>${env.CACHE_TTL_DAYS || 30} days</b>
-    · Made with ❤️ for LGU Kapalong
+    · Made with ❤️ for ${env.FOOTER_TEXT || "Image CDN"}
   </footer>
 </body>
 </html>`;
