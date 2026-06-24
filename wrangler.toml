@@ -24,7 +24,7 @@ ALLOWED_REFERRERS = "kapalong.gov.ph,localhost,127.0.0.1,facebook.com,m.facebook
 DEFAULT_SIZE = "w1600"
 
 # How many days to keep images in the Cloudflare edge cache.
-CACHE_TTL_DAYS = "30"
+CACHE_TTL_DAYS = "365"
 
 # Set to "true" to block hotlinking from disallowed referrers.
 # Set to "false" to allow all (recommended OFF while testing).
