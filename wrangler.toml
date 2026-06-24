@@ -1,0 +1,34 @@
+# =========================================================
+# Cloudflare Worker config — CDN caching proxy
+# =========================================================
+
+name = "cdn-worker"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+workers_dev = true
+
+[vars]
+# Origin API (Laravel) — file requests are proxied here on cache miss.
+# Must include the protocol, no trailing slash.
+API_URL = "https://api.example.com"
+
+# Route prefix — must match cdn.route_prefix on the Laravel side.
+ROUTE_PREFIX = "files"
+
+# Comma-separated allow list (used only when ENABLE_HOTLINK_PROTECTION = true)
+ALLOWED_REFERRERS = "localhost,127.0.0.1"
+ENABLE_HOTLINK_PROTECTION = "false"
+
+# How many days to keep responses at the edge (max 365 on free tier)
+CACHE_TTL_DAYS = "30"
+
+# Branding shown on the landing page
+SITE_NAME = "CDN"
+
+# --------------------------------------------------------
+#  SECRET (don't put it here — use the command below)
+#
+#     wrangler secret put INTERNAL_TOKEN
+#
+#  Must be identical to your Laravel CDN_INTERNAL_TOKEN.
+# --------------------------------------------------------

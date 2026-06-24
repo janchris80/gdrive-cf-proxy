@@ -1,0 +1,8 @@
+# Copy to .dev.vars for local development (never commit .dev.vars).
+API_URL=http://localhost:8000
+ROUTE_PREFIX=files
+INTERNAL_TOKEN=replace-me-with-same-value-as-laravel-CDN_INTERNAL_TOKEN
+ALLOWED_REFERRERS=localhost,127.0.0.1
+ENABLE_HOTLINK_PROTECTION=false
+CACHE_TTL_DAYS=30
+SITE_NAME=CDN (dev)

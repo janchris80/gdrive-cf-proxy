@@ -1,0 +1,18 @@
+{
+  "name": "cdn-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker that proxies and caches file requests for the janchris80/cdn-storage Laravel package.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "keywords": ["cloudflare", "workers", "cdn", "cache", "proxy"],
+  "author": "janchris80",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.78.0"
+  }
+}
