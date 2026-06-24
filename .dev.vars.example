@@ -1,0 +1,8 @@
+# Copy this file to `.dev.vars` for local development (wrangler dev).
+# DO NOT commit `.dev.vars` — it's in .gitignore.
+
+ALLOWED_REFERRERS=kapalong.gov.ph,localhost,127.0.0.1,facebook.com
+DEFAULT_SIZE=w1600
+CACHE_TTL_DAYS=30
+ENABLE_HOTLINK_PROTECTION=false
+SITE_NAME=LGU Kapalong Image CDN (dev)

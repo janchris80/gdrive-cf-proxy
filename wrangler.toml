@@ -1,0 +1,41 @@
+# ==========================================================
+# Cloudflare Worker config for GDrive Image Proxy
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+# ==========================================================
+
+name = "gdrive-cf-proxy"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Workers.dev free subdomain stays ON until you add a custom domain.
+workers_dev = true
+
+# ----------------------------------------------------------
+# Environment variables (PUBLIC — safe to commit)
+# For SECRETS use: wrangler secret put NAME
+# ----------------------------------------------------------
+[vars]
+# Comma-separated list of allowed referrer domains (hotlink protection).
+# Use "*" to allow any site. Empty = same as "*".
+ALLOWED_REFERRERS = "kapalong.gov.ph,localhost,127.0.0.1,facebook.com,m.facebook.com"
+
+# Default image size if user doesn't pass one.
+# Examples: s0 (original), w1200, w1920, s2000, w800-h600-c
+DEFAULT_SIZE = "w1600"
+
+# How many days to keep images in the Cloudflare edge cache.
+CACHE_TTL_DAYS = "30"
+
+# Set to "true" to block hotlinking from disallowed referrers.
+# Set to "false" to allow all (recommended OFF while testing).
+ENABLE_HOTLINK_PROTECTION = "false"
+
+# Optional: a friendly site name shown on the landing page.
+SITE_NAME = "LGU Kapalong Image CDN"
+
+# ----------------------------------------------------------
+# (Optional) Custom domain setup — uncomment when ready.
+# ----------------------------------------------------------
+# routes = [
+#   { pattern = "img.kapalong.gov.ph/*", custom_domain = true }
+# ]
