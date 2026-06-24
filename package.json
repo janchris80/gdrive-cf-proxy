@@ -1,7 +1,7 @@
 {
   "name": "gdrive-cf-proxy",
-  "version": "1.0.0",
-  "description": "Cloudflare Worker that proxies and caches Google Drive images with hotlink protection. Free, no R2 needed.",
+  "version": "2.0.0",
+  "description": "Cloudflare Worker file CDN backed by Google Drive. Supports images, PDFs, videos, and HMAC-signed fingerprint URLs.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
@@ -9,14 +9,7 @@
     "deploy": "wrangler deploy",
     "tail": "wrangler tail"
   },
-  "keywords": [
-    "cloudflare",
-    "workers",
-    "google-drive",
-    "image-proxy",
-    "cache",
-    "lgu-kapalong"
-  ],
+  "keywords": ["cloudflare", "workers", "google-drive", "cdn", "image-proxy", "file-proxy", "hmac", "lgu-kapalong"],
   "author": "LGU Kapalong",
   "license": "MIT",
   "devDependencies": {

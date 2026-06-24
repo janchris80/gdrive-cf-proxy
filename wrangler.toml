@@ -1,41 +1,40 @@
-# ==========================================================
-# Cloudflare Worker config for GDrive Image Proxy
-# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
-# ==========================================================
+# =========================================================
+# Cloudflare Worker config — GDrive File CDN v2
+# =========================================================
 
-name = "image"
+name = "cdn"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
+workers_dev = true
 
-# Workers.dev free subdomain stays ON until you add a custom domain.
-workers_dev = false
-
-# ----------------------------------------------------------
-# Environment variables (PUBLIC — safe to commit)
-# For SECRETS use: wrangler secret put NAME
-# ----------------------------------------------------------
 [vars]
-# Comma-separated list of allowed referrer domains (hotlink protection).
-# Use "*" to allow any site. Empty = same as "*".
-ALLOWED_REFERRERS = "kapalong.gov.ph,localhost,127.0.0.1,facebook.com,m.facebook.com,jcodev.online"
+# --------------------------------------------------------
+# MODE
+#   "public" → /img/<GDRIVE_ID>  works directly (no signing)
+#   "signed" → only signed fingerprints work (recommended)
+# --------------------------------------------------------
+MODE = "signed"
 
-# Default image size if user doesn't pass one.
-# Examples: s0 (original), w1200, w1920, s2000, w800-h600-c
-DEFAULT_SIZE = "w1600"
-
-# How many days to keep images in the Cloudflare edge cache.
-CACHE_TTL_DAYS = "365"
-
-# Set to "true" to block hotlinking from disallowed referrers.
-# Set to "false" to allow all (recommended OFF while testing).
+# Comma-separated domains allowed to hotlink (used only if ENABLE_HOTLINK_PROTECTION = true)
+ALLOWED_REFERRERS = "kapalong.gov.ph,www.kapalong.gov.ph,localhost,127.0.0.1,facebook.com,m.facebook.com,l.facebook.com"
 ENABLE_HOTLINK_PROTECTION = "false"
 
-# Optional: a friendly site name shown on the landing page.
-SITE_NAME = "Image CDN"
+# Default image size if route omits one
+DEFAULT_SIZE = "w1600"
 
-# ----------------------------------------------------------
-# (Optional) Custom domain setup — uncomment when ready.
-# ----------------------------------------------------------
-# routes = [
-#   { pattern = "img.kapalong.gov.ph/*", custom_domain = true }
-# ]
+# How many days to keep at the edge (max 365)
+CACHE_TTL_DAYS = "7"
+
+# Signature length in hex chars (must match Laravel CDN_SIG_LENGTH)
+SIG_LENGTH = "16"
+
+# Branding
+SITE_NAME = "CDN"
+
+# --------------------------------------------------------
+#  SECRET (don't put it here — use the command below)
+#
+#     wrangler secret put SIGNING_SECRET
+#
+#  Must be identical to your Laravel CDN_SECRET.
+# --------------------------------------------------------

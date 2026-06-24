@@ -1,26 +1,24 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>GDrive CF Proxy — Usage Demo</title>
-<style>
-  body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px}
-  img{max-width:100%;height:auto;border:1px solid #ddd;border-radius:8px;margin:10px 0}
-  code{background:#f4f4f4;padding:2px 6px;border-radius:4px}
-</style>
-</head>
+<html><head><meta charset="utf-8"><title>CDN Usage</title>
+<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px}
+img,video{max-width:100%;border:1px solid #ddd;border-radius:8px;margin:10px 0}
+code{background:#f4f4f4;padding:2px 6px;border-radius:4px}</style></head>
 <body>
-  <h1>GDrive CF Proxy — usage</h1>
-  <p>Replace <code>WORKER</code> with your deployed Worker URL and
-     <code>FILE_ID</code> with your Google Drive file ID.</p>
+<h1>GDrive CF Proxy v2 — Demo</h1>
+<p>Replace <code>WORKER</code> with your deployed URL and <code>TOKEN</code> with a signed fingerprint
+(from Laravel: <code>Cdn::fbPost($id)</code>).</p>
 
-  <h3>Thumbnail (w400)</h3>
-  <img src="https://WORKER.workers.dev/FILE_ID/w400" alt="thumb">
+<h3>Image (1200px)</h3>
+<img src="https://WORKER.workers.dev/img/TOKEN" alt="">
 
-  <h3>Facebook post (w1200)</h3>
-  <img src="https://WORKER.workers.dev/FILE_ID/w1200" alt="fb">
+<h3>PDF (inline)</h3>
+<iframe src="https://WORKER.workers.dev/file/TOKEN" width="100%" height="500"></iframe>
 
-  <h3>Original</h3>
-  <img src="https://WORKER.workers.dev/FILE_ID/original" alt="orig">
-</body>
-</html>
+<h3>Video</h3>
+<video controls>
+  <source src="https://WORKER.workers.dev/file/TOKEN/clip.mp4" type="video/mp4">
+</video>
+
+<h3>Download button</h3>
+<a href="https://WORKER.workers.dev/file/TOKEN/report.pdf?dl=1">📥 Download PDF</a>
+</body></html>
