@@ -3,7 +3,7 @@
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
 # ==========================================================
 
-name = "gdrive-cf-proxy"
+name = "image"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
 
